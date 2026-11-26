@@ -1,0 +1,20 @@
+# SPDX-License-Identifier: GPL-2.0-only
+
+obj-m := sm8250_npu.o sm8250_npucc.o
+sm8250_npu-y := accelerator.o power_bridge.o reset_bridge.o cache_bridge.o pas_bridge.o dma_bridge.o
+
+RUSTFLAGS_REMOVE_accelerator.o := --edition=2021
+RUSTFLAGS_accelerator.o := --edition=2024
+
+RUSTFLAGS_REMOVE_npucc_data.o := --edition=2021
+RUSTFLAGS_npucc_data.o := --edition=2024
+CFLAGS_npucc/clock_branch_bridge.o := -I$(srctree)/drivers/clk/qcom
+CFLAGS_npucc/clock_source_bridge.o := -I$(srctree)/drivers/clk/qcom
+CFLAGS_npucc/pll_bridge.o := -I$(srctree)/drivers/clk/qcom
+
+sm8250_npucc-y := npucc_data.o npucc/controller.o npucc/register_map.o \
+	npucc/clock_branch_bridge.o npucc/clock_source_bridge.o npucc/pll_bridge.o \
+	npucc/hm_pair.o
+
+CFLAGS_npucc/controller.o := -I$(srctree)/drivers/clk/qcom
+CFLAGS_npucc/hm_pair.o := -I$(srctree)/drivers/clk/qcom

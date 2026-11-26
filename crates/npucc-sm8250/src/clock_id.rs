@@ -1,0 +1,108 @@
+// SPDX-License-Identifier: GPL-2.0-only
+// Copyright (c) 2018, The Linux Foundation. All rights reserved.
+
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+#[repr(u32)]
+pub enum ClockId {
+    AtbClk = 0,
+    BtoCoreClk = 1,
+    BwmonClk = 2,
+    CalHm0CdcClk = 3,
+    CalHm0Clk = 4,
+    CalHm0ClkSrc = 5,
+    CalHm0DpmIpClk = 6,
+    CalHm0PerfCntClk = 7,
+    CalHm1CdcClk = 8,
+    CalHm1Clk = 9,
+    CalHm1ClkSrc = 10,
+    CalHm1DpmIpClk = 11,
+    CalHm1PerfCntClk = 12,
+    CoreClk = 13,
+    CoreClkSrc = 14,
+    DlDpmClk = 15,
+    DlLlmClk = 16,
+    DpmClk = 17,
+    DpmTempClk = 18,
+    DpmXoClk = 19,
+    DspAhbmClk = 20,
+    DspAhbsClk = 21,
+    DspAxiClk = 22,
+    DspBwmonAhbClk = 23,
+    DspBwmonClk = 24,
+    IsenseClk = 25,
+    LlmClk = 26,
+    LlmCurrClk = 27,
+    LlmTempClk = 28,
+    LlmXoClk = 29,
+    LmhClkSrc = 30,
+    NocAhbClk = 31,
+    NocAxiClk = 32,
+    NocDmaClk = 33,
+    Pll0 = 34,
+    Pll0OutEven = 35,
+    Pll1 = 36,
+    Pll1OutEven = 37,
+    RscXoClk = 38,
+    S2PClk = 39,
+    XoClk = 40,
+    XoClkSrc = 41,
+    DspCoreClkSrc = 42,
+    Q6SsPll = 43,
+}
+
+impl ClockId {
+    pub const ALL: [Self; 44] = [
+        Self::AtbClk,
+        Self::BtoCoreClk,
+        Self::BwmonClk,
+        Self::CalHm0CdcClk,
+        Self::CalHm0Clk,
+        Self::CalHm0ClkSrc,
+        Self::CalHm0DpmIpClk,
+        Self::CalHm0PerfCntClk,
+        Self::CalHm1CdcClk,
+        Self::CalHm1Clk,
+        Self::CalHm1ClkSrc,
+        Self::CalHm1DpmIpClk,
+        Self::CalHm1PerfCntClk,
+        Self::CoreClk,
+        Self::CoreClkSrc,
+        Self::DlDpmClk,
+        Self::DlLlmClk,
+        Self::DpmClk,
+        Self::DpmTempClk,
+        Self::DpmXoClk,
+        Self::DspAhbmClk,
+        Self::DspAhbsClk,
+        Self::DspAxiClk,
+        Self::DspBwmonAhbClk,
+        Self::DspBwmonClk,
+        Self::IsenseClk,
+        Self::LlmClk,
+        Self::LlmCurrClk,
+        Self::LlmTempClk,
+        Self::LlmXoClk,
+        Self::LmhClkSrc,
+        Self::NocAhbClk,
+        Self::NocAxiClk,
+        Self::NocDmaClk,
+        Self::Pll0,
+        Self::Pll0OutEven,
+        Self::Pll1,
+        Self::Pll1OutEven,
+        Self::RscXoClk,
+        Self::S2PClk,
+        Self::XoClk,
+        Self::XoClkSrc,
+        Self::DspCoreClkSrc,
+        Self::Q6SsPll,
+    ];
+
+    pub fn from_index(index: usize) -> Option<Self> {
+        Self::ALL.get(index).copied()
+    }
+}
+
+#[cfg(test)]
+#[path = "clock_id.tests.rs"]
+mod tests;

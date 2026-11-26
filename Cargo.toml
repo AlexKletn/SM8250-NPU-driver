@@ -1,6 +1,10 @@
 [workspace]
 resolver = "3"
-members = []
+members = [
+    "crates/npu-domain",
+    "crates/npu-sm8250",
+    "crates/npucc-sm8250",
+]
 
 [workspace.package]
 edition = "2024"
